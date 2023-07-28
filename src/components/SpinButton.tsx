@@ -37,13 +37,14 @@ const SpinButton: React.FC = () => {
             )}
           </div>
         </div>
-        <button onClick={decrement} className="spinButton" aria-label="감소">
+        <button onClick={decrement} className="spinButton" aria-label="성인 승객 1명 감소">
           -
         </button>
         <input
           type="text"
           role="spinbutton"
-          aria-label={`성인 ${count}명`}
+          aria-label={`현재 성인 ${count}명이 선택되어있습니다.`}
+          aria-live="assertive"
           aria-valuemin={0}
           aria-valuemax={3}
           aria-valuenow={count}
@@ -51,7 +52,7 @@ const SpinButton: React.FC = () => {
           className="spinButtonInput"
           value={count}
         />
-        <button onClick={increment} className="spinButton" aria-label="증가">
+        <button onClick={increment} className="spinButton" aria-label={`성인 승객 1명 증가`}>
           +
         </button>
       </div>
