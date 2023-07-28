@@ -27,24 +27,31 @@ const SpinButton: React.FC = () => {
             className="helpIcon"
             onMouseEnter={toggleTooltip}
             onMouseLeave={toggleTooltip}
+            aria-describedby={isTooltipVisible ? "tooltip" : undefined}
           >
             ?
             {isTooltipVisible && (
-              <span className="tooltip">최대 인원수는 3명까지 가능합니다</span>
+              <span className="tooltip" id="tooltip" aria-live="assertive">
+                최대 인원수는 3명까지 가능합니다
+              </span>
             )}
           </div>
         </div>
-        <button onClick={decrement} className="spinButton">
+        <button onClick={decrement} className="spinButton" aria-label="감소">
           -
         </button>
         <input
           type="text"
           role="spinbutton"
+          aria-label={`성인 ${count}명`}
+          aria-valuemin={0}
+          aria-valuemax={3}
+          aria-valuenow={count}
           readOnly
           className="spinButtonInput"
           value={count}
         />
-        <button onClick={increment} className="spinButton">
+        <button onClick={increment} className="spinButton" aria-label="증가">
           +
         </button>
       </div>
