@@ -1,7 +1,7 @@
 import React, { useState, MouseEvent } from "react";
 import "./SpinButton.css";
 
-const SpinButton: React.FC = () => {
+const SpinButton= ({type}:{type:'성인'|'소아'|'유아'}) => {
   const [count, setCount] = useState<number>(0);
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
 
@@ -22,7 +22,7 @@ const SpinButton: React.FC = () => {
       <div>
         <h1>승객 선택</h1>
         <div className="spinButtonLabel">
-          <label>성인</label>
+          <label>{type}</label>
           <div
             className="helpIcon"
             onMouseEnter={toggleTooltip}
@@ -37,13 +37,13 @@ const SpinButton: React.FC = () => {
             )}
           </div>
         </div>
-        <button onClick={decrement} className="spinButton" aria-label="성인 승객 1명 감소">
+        <button onClick={decrement} className="spinButton" aria-label={`{type} 승객 1명 감소`}>
           -
         </button>
         <input
           type="text"
           role="spinbutton"
-          aria-label={`현재 성인 ${count}명이 선택되어있습니다.`}
+          aria-label={`현재 ${type} ${count}명이 선택되어있습니다.`}
           aria-live="assertive"
           aria-valuemin={0}
           aria-valuemax={3}
@@ -52,7 +52,7 @@ const SpinButton: React.FC = () => {
           className="spinButtonInput"
           value={count}
         />
-        <button onClick={increment} className="spinButton" aria-label={`성인 승객 1명 증가`}>
+        <button onClick={increment} className="spinButton" aria-label={`${type} 승객 1명 증가`}>
           +
         </button>
       </div>
